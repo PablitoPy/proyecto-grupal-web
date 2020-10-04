@@ -12,6 +12,7 @@ const dummyProductos = [
         "precio": '50000',
         "descripcion": 'blanco y gris',
         "stock": '50',
+        "url": 'https://i.etsystatic.com/18236162/r/il/201b8b/1628087393/il_794xN.1628087393_mjjw.jpg',
         "favorito": true,
         "proveedor": {
             "id_proveedor": 1,
@@ -41,10 +42,10 @@ function ProductoList (props) {
         getProductos();
     }, [])
 
-    const deleteProducto = id => {
-        axios.delete(`/primer-trabajo-grupal/rest/productos/${id}`)
+    const deleteProducto = id_producto => {
+        axios.delete(`/primer-trabajo-grupal/rest/productos/${id_producto}`)
             .then(res => {
-                alert(`Producto con ID: ${id} borrada correctamente`);
+                alert(`Producto con ID: ${id_producto} borrada correctamente`);
                 getProductos();
             })
             .catch(err => {
@@ -55,8 +56,8 @@ function ProductoList (props) {
     const columns = [
         {
             title: 'ID',
-            dataIndex: 'id',
-            key: 'id'
+            dataIndex: 'id_producto',
+            key: 'id_producto'
         },
         {
           title: 'Nombre',
@@ -93,14 +94,14 @@ function ProductoList (props) {
                     <Button 
                         type="primary" 
                         shape="circle" 
-                        onClick={() => props.history.push(`${props.match.url}/edit/${record.id}`)} 
+                        onClick={() => props.history.push(`${props.match.url}/edit/${record.id_producto}`)} 
                         icon={<EditFilled />} />
                 </Tooltip>
                 <Tooltip title="Delete">
                     <Button 
                         type="danger" 
                         shape="circle" 
-                        onClick={() => deleteProducto(record.id)} 
+                        onClick={() => deleteProducto(record.id_producto)} 
                         icon={<DeleteFilled />} />
                 </Tooltip>
             </Space>

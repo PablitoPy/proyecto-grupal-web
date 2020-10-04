@@ -3,9 +3,10 @@ import './App.css';
 import { Layout, Menu, Carousel } from 'antd';
 import "antd/dist/antd.css";
 import ProductoList from './components/ProductoList';
-import TypeList from './components/TypeList';
-import TaskForm from './components/TaskForm';
-import TypeForm from './components/TypeForm';
+import ProductoCat from './ProductoCat';
+import ProveedorList from './components/ProveedorList';
+import ProductoForm from './components/ProductoForm';
+import ProveedorForm from './components/ProveedorForm';
 import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -31,11 +32,11 @@ function AppMenu() {
         <Link to="/">Principal</Link>
       </Menu.Item>
       <Menu.Item key="productos" icon={<AppstoreOutlined />}>
-        <Link to="/">Productos</Link>
+        <Link to="/catalogo">Catálogo</Link>
       </Menu.Item>
       <SubMenu key="administracion" icon={<AppstoreOutlined />} title="Administración">
-        <Menu.Item key="administracion:1"><Link to="/types">Productos</Link></Menu.Item>
-        <Menu.Item key="administracion:2"><Link to="/types/new">Proveedores</Link></Menu.Item>
+        <Menu.Item key="administracion:1"><Link to="/productos">Productos</Link></Menu.Item>
+        <Menu.Item key="administracion:2"><Link to="/proveedores">Proveedores</Link></Menu.Item>
       </SubMenu>
       <Menu.Item key="about" icon={<AppstoreOutlined />}>
         <Link to="/about">About</Link>
@@ -44,30 +45,31 @@ function AppMenu() {
   );
 }
 
-function TaskRoutes({ match }) {
+function ProductoRoutes({ match }) {
   return (
     <>
-      <Route exact path={`${match.path}/new`} component={TaskForm} />
+      <Route exact path={`${match.path}/new`} component={ProductoForm} />
       <Route
         exact
-        path={`${match.path}/edit/:taskId`}
-        component={TaskForm}
+        path={`${match.path}/edit/:productoId`}
+        component={ProductoForm}
       />
       <Route exact path={`${match.path}/`} component={ProductoList} />
     </>
   );
 }
 
-function TypeRoutes({ match }) {
+
+function ProveedorRoutes({ match }) {
   return (
     <>
-      <Route exact path={`${match.path}/new`} component={TypeForm} />
+      <Route exact path={`${match.path}/new`} component={ProveedorForm} />
       <Route
         exact
-        path={`${match.path}/edit/:typeId`}
-        component={TypeForm}
+        path={`${match.path}/edit/:proveedorId`}
+        component={ProveedorForm}
       />
-      <Route exact path={`${match.path}/`} component={TypeList} />
+      <Route exact path={`${match.path}/`} component={ProveedorList} />
     </>
   );
 }
@@ -77,7 +79,7 @@ function App() {
     <Router>
       <Layout>
         <Header style={{ color: 'white', fontSize: 30, textAlign: 'center', background: 'pink' }}>
-          <div>Forever 19 1/2</div>
+          <div>Forever Young</div>
                     </Header>
 
         <Content>
@@ -89,9 +91,10 @@ function App() {
             <>
               <Route path="/" exact component={Home} />
               <Route path="/about" component={About} />
-              {/* Hacemos esto porque tasks tiene subrutas */}
-              <Route path="/tasks" component={TaskRoutes} />
-              <Route path="/types" component={TypeRoutes} />
+              <Route path="/catalogo" component={ProductoCat} />
+              {/* Hacemos esto porque productoss tiene subrutas */}
+              <Route path="/productos" component={ProductoRoutes} />
+              <Route path="/proveedores" component={ProveedorRoutes} />
 
 
             </>

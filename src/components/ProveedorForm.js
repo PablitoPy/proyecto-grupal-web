@@ -6,57 +6,41 @@ import moment from 'moment';
 const { Option } = Select;
 
 
-function TaskForm (props) {
+function ProveedorForm (props) {
 
-    // const [task, setTask] = useState({});
-    const [types, setTypes] = useState([]);
-    const [form] = Form.useForm();
+         const [form] = Form.useForm();
 
     // Ejecutado solo al renderizar el componente por primera vez
     useEffect(() => {
 
-        // Obtengo los tipos del backend para poder mostrar en el select
-        axios.get('/ws/rest/types')
-            .then(res => {
-                setTypes(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-        const { match } = props;
-        if (match.params.taskId) {
-            axios.get(`/ws/rest/tasks/${match.params.taskId}`)
-                .then((rsp) => {
-                    // NOTE: modificamos atributo type para tener como id
-                    let taskForm = rsp.data;
-                    taskForm.type = taskForm.type ? taskForm.type.id : null;
-                    taskForm.limitDate = taskForm.limitDate ? moment(taskForm.limitDate) : moment();
-                    form.setFieldsValue(taskForm);
+        //const { match } = props;
+        if (props.match.params.typeId) {
+            axios.get(`/primer-trabajo-grupal/rest/proveedores/${props.match.params.proveedorId}`)
+                .then((res) => {
+                    // NOTE: modificamos atributo proveedor para tener como id
+                    let proveedorForm = res.data;
+                    form.setFieldsValue(proveedorForm);
             });
         }
     }, []);
 
-    const submit = (formTask) => {
-        // NOTE: modificamos atributo type para enviar como objeto
-        formTask.type = {
-            id: formTask.type
-        }
-        const { match, history } = props;
-        if (match.params.taskId) {
-            axios.put(`/ws/rest/tasks/${match.params.taskId}`, formTask)
+     const submit = (formProveedor) => {
+    //     // NOTE: modificamos atributo proveedor para enviar como objeto
+         const { match, history } = props;
+        if (props.match.params.proveedorId) {
+            axios.put(`/primer-trabajo-grupal/rest/proveedor/${props.match.params.proveedorId}`, formProveedor)
                 .then((rsp) => {
                     alert('exito');
-                    history.push('/tasks');
+                    history.push('/proveedores');
                 });
         } else {
-            axios.post(`/ws/rest/tasks/`, formTask)
+            axios.post(`/primer-trabajo-grupal/rest/proveedores/`, formProveedor)
                 .then((rsp) => {
                     alert('exito');
-                    history.push('/tasks');
+                     history.push('/proveedores');
                 });
         }
-    }
+    }   
 
     const onFinish = values => {
         console.log('Success:', values);
@@ -78,27 +62,36 @@ function TaskForm (props) {
             onFinishFailed={onFinishFailed}
             >
             <Form.Item
-                label="Name"
-                name="name"
+                label="Nombre"
+                name="nombre"
                 rules={[{ required: true, message: 'Required!' }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item
-                label="Description"
-                name="description"
+                label="RUC"
+                name="ruc"
                 rules={[{ required: true, message: 'Required!' }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item
+                label="Teléfono"
+                name="telefono"
+                rules={[{ required: true, message: 'Required!' }]}
+            >
+                <Input />
+            </Form.Item>
+            
+
+            {/* <Form.Item
                 label="Type"
                 name="type"
                 rules={[{ required: true, message: 'Required!' }]}
-            >
-                <Select style={{ width: '100%' }} onChange={(value) => console.log('handleChangeSelect -> ' + value)}>
+            > */}
+                {/* <Select style={{ width: '100%' }} onChange={(value) => console.log('handleChangeSelect -> ' + value)}>
                     {
                         types.map(type => {
                             return (
@@ -106,33 +99,34 @@ function TaskForm (props) {
                             )
                         })
                     }
-                </Select>
-            </Form.Item>
+                </Select> */}
+            {/* </Form.Item> */}
 
-            <Form.Item
+            {/* <Form.Item
                 label="Limit Date"
                 name="limitDate"
                 rules={[{ required: true, message: 'Required!' }]}
             >
                 <DatePicker onChange={(date) => console.log('handleChangeDatepicker -> ' + date)} />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Row>
                     <Col span={12}>
-                        <Button type="default" onClick={() => props.history.push(`/tasks`)}>
+                        <Button proveedor="default" onClick={() => props.history.push(`/proveedores`)}>
                             Cancel
                         </Button>
                     </Col>
                     <Col span={12}>
-                        <Button type="primary" htmlType="submit">
+                        <Button proveedor="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Col>
                 </Row>
             </Form.Item>
-        </Form>
+        </Form> 
     )
 }
 
-export default TaskForm;
+
+export default ProveedorForm;
