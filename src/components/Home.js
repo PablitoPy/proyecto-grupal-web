@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 //import ProductoCat from './ProductoCat';
 
-import { Carousel, Image } from 'antd';
+import { Carousel, Image, Row, Col, Card } from 'antd';
+import axios from 'axios';
 
 const contentStyle = {
   height: '160px',
@@ -15,7 +16,22 @@ const contentStyle = {
 
 function About(props) {
 
-//  const [productosFavoritos, setProductosFavoritos] = useState([]);
+  const [productosFavoritos, setProductosFavoritos] = useState([]);
+
+  const getProductos = () => {
+    // axios.get('primer-trabajo-grupal/rest/catalogo/paginated', { params: { pageSize: 2, first: 0 }})
+    axios.get('primer-trabajo-grupal/rest/productos')
+      .then(res => {
+        setProductosFavoritos(res.data.filter(producto => producto.favorito == false))
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+      getProductos();
+  }, [])
 
   return (
     // <h3>Requested Param: {props.match.params.id}</h3>
@@ -55,33 +71,13 @@ function About(props) {
       </Carousel>
 
       <h4>NOVEDADES</h4>
-{/* 
-      const getProductos = () => {
-        // axios.get('primer-trabajo-grupal/rest/catalogo/paginated', { params: { pageSize: 2, first: 0 }})
-        axios.get('primer-trabajo-grupal/rest/productos')
-          .then(res => {
-            setProductosFavoritos(res.data.filter(producto => producto.favorito == false))
 
-          })
-          .catch(err => {
-            console.log(err);
-          });
-    }
-
-    useEffect(() => {
-        getProductos();
-    }, [])
-
-
-
-    return (
-  
-        <Row>
-          {productos.map(producto => {
+      <Row>
+          {productosFavoritos.map(producto => {
             return (
-              <Col span={6}>
+              <Col span={8}>
                 <Card title={producto.nombre} bordered={true}>
-                  <Image width src="https://9eba410b89d8c2b814f2-f653ee9e3b6aad4b2107b6a1ab482f61.ssl.cf2.rackcdn.com/product-hugerect-940908-112265-1490004508-136be288ddcfe9030a8632f9ffcdb003.jpg" />
+                  <Image width src={producto.url} />
                   <br />
                   <p>
                     {producto.descripcion}
@@ -94,10 +90,6 @@ function About(props) {
             )
           })}
         </Row>
-
-    
-   
-  ); */}
   </>
   );
 }

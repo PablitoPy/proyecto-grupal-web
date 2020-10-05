@@ -93,14 +93,14 @@ function ProductoList (props) {
                     <Button 
                         type="primary" 
                         shape="circle" 
-                        onClick={() => props.history.push(`${props.match.url}/edit/${record.id_producto}`)} 
+                        onClick={() => props.history.push(`${props.match.url}/edit/${record.idProducto}`)} 
                         icon={<EditFilled />} />
                 </Tooltip>
                 <Tooltip title="Delete">
                     <Button 
                         type="danger" 
                         shape="circle" 
-                        onClick={() => deleteProducto(record.id_producto)} 
+                        onClick={() => deleteProducto(record.idProducto)} 
                         icon={<DeleteFilled />} />
                 </Tooltip>
             </Space>

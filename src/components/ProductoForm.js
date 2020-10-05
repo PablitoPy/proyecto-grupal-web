@@ -30,8 +30,8 @@ function ProductoForm (props) {
                 .then((rsp) => {
                     // NOTE: modificamos atributo producto para tener como id
                     let productoForm = rsp.data;
-                    productoForm.producto = productoForm.producto ? productoForm.producto.id : null;
-                    productoForm.limitDate = productoForm.limitDate ? moment(productoForm.limitDate) : moment();
+                     productoForm.proveedor = productoForm.proveedor ? productoForm.proveedor.id_proveedor : null;
+                    //productoForm.limitDate = productoForm.limitDate ? moment(productoForm.limitDate) : moment();
                     form.setFieldsValue(productoForm);
             });
         }
@@ -39,8 +39,8 @@ function ProductoForm (props) {
 
     const submit = (formProducto) => {
         // NOTE: modificamos atributo producto para enviar como objeto
-        formProducto.producto = {
-            id: formProducto.producto
+        formProducto.proveedor = {
+            id_proveedor: formProducto.proveedor
         }
         const {match, history } = props;
         if (props.match.params.productoId) {

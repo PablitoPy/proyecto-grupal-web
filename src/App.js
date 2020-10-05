@@ -78,7 +78,8 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Header style={{ color: 'white', fontSize: 30, textAlign: 'center', background: 'pink' }}>
+      <Header style={{ color: 'white', 
+          height: 150, fontSize: 30, textAlign: 'center', background: 'pink' }}>  
         <div class="logoBlog">
                     <img src="logopyto.jpeg" width={200} />
                 </div>
