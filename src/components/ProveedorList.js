@@ -31,10 +31,10 @@ function ProveedorList (props) {
         getProveedores();
     }, [])
 
-    const deleteProveedor = id_proveedor => {
-        axios.delete(`/primer-trabajo-grupal/rest/proveedores/${id_proveedor}`)
+    const deleteProveedor = idProveedor => {
+        axios.delete(`/primer-trabajo-grupal/rest/proveedores/${idProveedor}`)
             .then(res => {
-                alert(`Tipo con ID: ${id_proveedor} borrada correctamente`);
+                alert(`Tipo con ID: ${idProveedor} borrada correctamente`);
                 getProveedores();
             })
             .catch(err => {
@@ -46,8 +46,8 @@ function ProveedorList (props) {
     const columns = [
         {
             title: 'ID',
-            dataIndex: 'id_proveedor',
-            key: 'id_proveedor'
+            dataIndex: 'idProveedor',
+            key: 'idProveedor'
         },
         {
           title: 'Nombre',
@@ -73,14 +73,14 @@ function ProveedorList (props) {
                     <Button 
                         type="primary" 
                         shape="circle" 
-                        onClick={() => props.history.push(`${props.match.url}/edit/${record.id}`)} 
+                        onClick={() => props.history.push(`${props.match.url}/edit/${record.idProveedor}`)} 
                         icon={<EditFilled />} />
                 </Tooltip>
                 <Tooltip title="Delete">
                     <Button 
                         type="danger" 
                         shape="circle" 
-                        onClick={() => deleteProveedor(record.id)} 
+                        onClick={() => deleteProveedor(record.idProveedor)} 
                         icon={<DeleteFilled />} />
                 </Tooltip>
             </Space>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-//import ProductoCat from './ProductoCat';
-
-import { Carousel, Image, Row, Col, Card } from 'antd';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Carousel, Image, Row, Col, Card, Button } from 'antd';
 import axios from 'axios';
+
+
 
 const contentStyle = {
   height: '160px',
@@ -30,7 +31,7 @@ function About(props) {
   }
 
   useEffect(() => {
-      getProductos();
+    getProductos();
   }, [])
 
   return (
@@ -38,59 +39,51 @@ function About(props) {
     <>
       <Carousel autoplay>
         <div>
-          {/* <h3 style={contentStyle}> */}
           <Image
-            //  width={1000}
             src="https://www.eltormes.com/enamodate/wp-content/uploads/2018/08/10-elle.jpg"
           />
-          {/* </h3> */}
         </div>
         <div>
-          {/* <h3 style={contentStyle}> */}
-          <Image
-            //  width={1000}
-            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/aeropuerto-ok-1531303498.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*"
-          />
-          {/* </h3> */}
+          <Image src="https://www.forever21.com/images/f21/us/en/web/20200407/0929_WGA_JACKETS_D_M_082604_f21.jpg?1" />
         </div>
         <div>
-          {/* <h3 style={contentStyle}> */}
           <Image
             src="https://forever21.imgix.net/img/app/shopmedia/production/1/16-66-5323.jpg?w=1349&auto=format"
           />
-          {/* </h3> */}
         </div>
         <div>
-          {/* <h3 style={contentStyle}> */}
           <Image
-            //width={200}
             src="https://forever21.imgix.net/img/app/shopmedia/production/1/16-66-5310.jpg?w=1349&auto=format"
           />
-          {/* </h3> */}
         </div>
       </Carousel>
 
       <h4>NOVEDADES</h4>
 
       <Row>
-          {productosFavoritos.map(producto => {
-            return (
-              <Col span={8}>
-                <Card title={producto.nombre} bordered={true}>
-                  <Image width src={producto.url} />
-                  <br />
-                  <p>
-                    {producto.descripcion}
-                  </p>
-                  <p>
-                    Precio: {producto.precio}
-                  </p>
-                </Card>
-              </Col>
-            )
-          })}
-        </Row>
-  </>
+        {productosFavoritos.map(producto => {
+          return (
+            <Col span={8}>
+              <Card title={producto.nombre} bordered={true}>
+                <Image width src={producto.url} />
+                <br />
+                <p>
+                  {producto.descripcion}
+                </p>
+                <p>
+                  Precio: {producto.precio} Gs.
+                </p>
+                <a href="url" >Ver detalles del producto</a>
+                <br></br>
+                <br></br>
+                <Button onClick={() => alert("Añadido a carrito")} type="primary" shape="round" icon={<ShoppingCartOutlined />} size={30}   >
+                  Añadir a carrito  </Button>
+              </Card>
+            </Col>
+          )
+        })}
+      </Row>
+    </>
   );
 }
 

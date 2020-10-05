@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const dummyProductos = [
     {
-        "id_producto": 1,        
+        "idProducto": 1,        
         "nombre": 'remera',
         "precio": '50000',
         "descripcion": 'blanco y gris',
@@ -14,7 +14,7 @@ const dummyProductos = [
         "url": 'https://i.etsystatic.com/18236162/r/il/201b8b/1628087393/il_794xN.1628087393_mjjw.jpg',
         "favorito": true,
         "proveedor": {
-            "id_proveedor": 1,
+            "idProveedor": 1,
             "nombre": 'Chacomer',
             "ruc": '5654987',
             "telefono": '0981654321' 
@@ -41,10 +41,10 @@ function ProductoList (props) {
         getProductos();
     }, [])
 
-    const deleteProducto = id_producto => {
-        axios.delete(`/primer-trabajo-grupal/rest/productos/${id_producto}`)
+    const deleteProducto = idProducto => {
+        axios.delete(`/primer-trabajo-grupal/rest/productos/${idProducto}`)
             .then(res => {
-                alert(`Producto con ID: ${id_producto} borrada correctamente`);
+                alert(`Producto con ID: ${idProducto} borrada correctamente`);
                 getProductos();
             })
             .catch(err => {
@@ -55,8 +55,8 @@ function ProductoList (props) {
     const columns = [
         {
             title: 'ID',
-            dataIndex: 'id_producto',
-            key: 'id_producto'
+            dataIndex: 'idProducto',
+            key: 'idProducto'
         },
         {
           title: 'Nombre',
