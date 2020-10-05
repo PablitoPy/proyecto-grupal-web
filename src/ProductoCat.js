@@ -1,18 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+//import React from 'react';
 import "antd/dist/antd.css";
 import './App.css';
+import axios from 'axios';
 
 import { Layout,  Row, Col, Card, Image, Pagination } from 'antd';
 
 const { Content } = Layout;
 
-function ProductoCat() {
+
+
+function ProductoCat (props) {
+
+    const [productos, setProductos] = useState([]);
+    
+
+    const getProductos = () => {
+        // axios.get('primer-trabajo-grupal/rest/catalogo/paginated', { params: { pageSize: 2, first: 0 }})
+        axios.get('primer-trabajo-grupal/rest/productos')
+            .then(res => {
+                setProductos(res.data);
+                            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    useEffect(() => {
+        getProductos();
+    }, [])
+
+
+
     return (
                 <Content>
+<Row>
+{productos.map(producto => {
+                             return (
+                                <Col span={6}>
+                                    <Card title={producto.nombre} bordered={true}>
+                                        <Image width src="https://9eba410b89d8c2b814f2-f653ee9e3b6aad4b2107b6a1ab482f61.ssl.cf2.rackcdn.com/product-hugerect-940908-112265-1490004508-136be288ddcfe9030a8632f9ffcdb003.jpg" />
+                                        <br />
+                                        <p>
+                                           {producto.descripcion}
+                                        </p>
+                                        <p>
+                                            Precio: {producto.precio}
+                                        </p>
+                                    </Card>
+                                </Col>
+                             )
+                         })}
+                         </Row>
                     <Row>
-                        <Col span={6}>
-                            <Card title="Vestido Tami Love Noir" bordered={true}>
-                                <Image width src="https://images-na.ssl-images-amazon.com/images/I/61bU4ViU5%2BL._AC_SL1001_.jpg" />
+
+                        <br/> <br/>
+                        {/* <Col span={6}>
+                            <Card title= {nombre} bordered={true}>
+                                <Image width src=  {url} />
                                 <br />
                                 <p>
                                     Tamaños disponibles en: S, M, L.
@@ -24,7 +69,7 @@ function ProductoCat() {
                                     Precio: $25.99
                                 </p>
                             </Card>
-                        </Col>
+                        </Col> */}
                         <Col span={6}>
                             <Card title="Vestido Coconut Palm" bordered={true}>
                                 <Image width src="https://9eba410b89d8c2b814f2-f653ee9e3b6aad4b2107b6a1ab482f61.ssl.cf2.rackcdn.com/product-hugerect-940908-112265-1490004508-136be288ddcfe9030a8632f9ffcdb003.jpg" />

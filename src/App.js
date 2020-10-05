@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Layout, Menu, Carousel } from 'antd';
+import { Layout, Menu, Carousel, Row, Col } from 'antd';
 import "antd/dist/antd.css";
 import ProductoList from './components/ProductoList';
 import ProductoCat from './ProductoCat';
@@ -10,7 +10,7 @@ import ProveedorForm from './components/ProveedorForm';
 import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { AppstoreOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, MailOutlined } from '@ant-design/icons';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Content } = Layout;
@@ -79,7 +79,12 @@ function App() {
     <Router>
       <Layout>
         <Header style={{ color: 'white', fontSize: 30, textAlign: 'center', background: 'pink' }}>
+        <div class="logoBlog">
+                    <img src="logopyto.jpeg" width={200} />
+                </div>
+         
           <div>Forever Young</div>
+
                     </Header>
 
         <Content>
@@ -102,9 +107,25 @@ function App() {
           
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          <p>Teléfono</p>
-          <p>Dirección</p>
-          <p>Ciudad - País</p>
+        <Row>
+                    <Col span={12}>
+                        <div id="test6">
+                            <FacebookOutlined /> Forever Young
+                <br></br>
+                            <InstagramOutlined /> @foreveryoungpy
+
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div id="test7">
+                            <TwitterOutlined /> @foreveryoungpy
+                 <br></br>
+                            <MailOutlined />contactos@foreveryoung.com
+                 </div>
+                    </Col>
+                </Row>
+
+                <br></br>
         </Footer>
       </Layout>
     </Router>

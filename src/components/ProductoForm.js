@@ -25,8 +25,8 @@ function ProductoForm (props) {
             });
 
         const { match } = props;
-        if (match.params.productoId) {
-            axios.get(`/primer-trabajo-grupal/rest/productos/${match.params.productoId}`)
+        if (props.match.params.productoId) {
+            axios.get(`/primer-trabajo-grupal/rest/productos/${props.match.params.productoId}`)
                 .then((rsp) => {
                     // NOTE: modificamos atributo producto para tener como id
                     let productoForm = rsp.data;
@@ -42,9 +42,9 @@ function ProductoForm (props) {
         formProducto.producto = {
             id: formProducto.producto
         }
-        const { match, history } = props;
-        if (match.params.productoId) {
-            axios.put(`/primer-trabajo-grupal/rest/productos/${match.params.productoId}`, formProducto)
+        const {match, history } = props;
+        if (props.match.params.productoId) {
+            axios.put(`/primer-trabajo-grupal/rest/productos/${props.match.params.productoId}`, formProducto)
                 .then((rsp) => {
                     alert('exito');
                     history.push('/productos');
@@ -136,7 +136,7 @@ function ProductoForm (props) {
                     {
                         proveedores.map(proveedor => {
                             return (
-                                <Option key={proveedor.id_proveedor} value={proveedor.id_proveedor}>{proveedor.name}</Option>
+                                <Option key={proveedor.id_proveedor} value={proveedor.id_proveedor}>{proveedor.nombre}</Option>
                             )
                         })
                     }

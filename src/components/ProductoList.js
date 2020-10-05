@@ -6,8 +6,7 @@ import axios from 'axios';
 
 const dummyProductos = [
     {
-        "id_producto": 1,
-        
+        "id_producto": 1,        
         "nombre": 'remera',
         "precio": '50000',
         "descripcion": 'blanco y gris',
