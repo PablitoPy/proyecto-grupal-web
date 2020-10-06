@@ -5,7 +5,7 @@ import './App.css';
 import axios from 'axios';
 
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import {Button, Layout, Row, Col, Card, Image, Pagination } from 'antd';
+import {Button, Layout, Row, Col, Card, Image, Pagination, Space } from 'antd';
 
 const { Content } = Layout;
 
@@ -38,6 +38,7 @@ function ProductoCat(props) {
                 {productos.map(producto => {
                     return (
                         <Col span={6}>
+                            <Space direction="vertical">
                             <Card title={producto.nombre} bordered={true}>
                                 <Image width src={producto.url} />
                                 <br />
@@ -55,6 +56,7 @@ function ProductoCat(props) {
                                     Añadir a carrito  </Button>
 
                             </Card>
+                            </Space>
                         </Col>
                     )
                 })}

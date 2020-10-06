@@ -16,7 +16,7 @@ function ProductoForm (props) {
     useEffect(() => {
 
         // Obtengo los tipos del backend para poder mostrar en el select
-        axios.get('/primer-trabajo-grupal/rest/productos')
+        axios.get('/primer-trabajo-grupal/rest/proveedores')
             .then(res => {
                 setProveedores(res.data)
             })
@@ -44,7 +44,7 @@ function ProductoForm (props) {
         }
         const {match, history } = props;
         if (props.match.params.productoId) {
-            axios.put(`/primer-trabajo-grupal/rest/productos/`, formProducto)
+            axios.put(`/primer-trabajo-grupal/rest/productos/${props.match.params.productoId}`, formProducto)
                 .then((rsp) => {
                     alert('exito');
                     history.push('/productos');
@@ -114,7 +114,7 @@ function ProductoForm (props) {
             <Form.Item
                 label="Favorito"
                 name="favorito"
-                rules={[{ required: true, message: 'Required!' }]}
+                //rules={[{ required: true, message: 'Required!' }]}
             >
                 <Input />
             </Form.Item>
@@ -147,12 +147,12 @@ function ProductoForm (props) {
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Row>
                     <Col span={12}>
-                        <Button proveedor="default" onClick={() => props.history.push(`/productos`)}>
+                        <Button type="default" onClick={() => props.history.push(`/productos`)}>
                             Cancel
                         </Button>
                     </Col>
                     <Col span={12}>
-                        <Button proveedor="primary" htmlProveedor="submit">
+                        <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Col>

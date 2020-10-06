@@ -40,7 +40,7 @@ function About(props) {
       <Carousel autoplay>
         <div>
           <Image
-            src="https://www.eltormes.com/enamodate/wp-content/uploads/2018/08/10-elle.jpg"
+            src="https://forever21.imgix.net/img/app/shopmedia/production/1/16-66-5293.jpg?w=1087&auto=format"
           />
         </div>
         <div>

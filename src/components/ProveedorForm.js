@@ -14,7 +14,7 @@ function ProveedorForm (props) {
     useEffect(() => {
 
         //const { match } = props;
-        if (props.match.params.typeId) {
+        if (props.match.params.proveedorId) {
             axios.get(`/primer-trabajo-grupal/rest/proveedores/${props.match.params.proveedorId}`)
                 .then((res) => {
                     // NOTE: modificamos atributo proveedor para tener como id
@@ -28,7 +28,7 @@ function ProveedorForm (props) {
     //     // NOTE: modificamos atributo proveedor para enviar como objeto
          const { match, history } = props;
         if (props.match.params.proveedorId) {
-            axios.put(`/primer-trabajo-grupal/rest/proveedor/${props.match.params.proveedorId}`, formProveedor)
+            axios.put(`/primer-trabajo-grupal/rest/proveedores/${props.match.params.proveedorId}`, formProveedor)
                 .then((rsp) => {
                     alert('exito');
                     history.push('/proveedores');
@@ -113,12 +113,12 @@ function ProveedorForm (props) {
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Row>
                     <Col span={12}>
-                        <Button proveedor="default" onClick={() => props.history.push(`/proveedores`)}>
+                        <Button type="default" onClick={() => props.history.push(`/proveedores`)}>
                             Cancel
                         </Button>
                     </Col>
                     <Col span={12}>
-                        <Button proveedor="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Col>

@@ -10,7 +10,7 @@ import ProveedorForm from './components/ProveedorForm';
 import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { AppstoreOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, MailOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, DingdingOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, MailOutlined } from '@ant-design/icons';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Content } = Layout;
@@ -80,7 +80,7 @@ function App() {
       <Layout>
       <Header style={{ color: 'white', 
           height: 140, fontSize: 30, textAlign: 'center', background: 'pink' }}>  
-                    <img src="foreverYoung.png" width={230} />
+                    <img src="/foreverYoung.png" width={230} />
           {/* <div>Forever Young</div> */}
 
                     </Header>
@@ -106,15 +106,20 @@ function App() {
         </Content>
         <Footer style={{ textAlign: 'center' }}>
         <Row>
-                    <Col span={12}>
+                    <Col span={8}>
                         <div id="test6">
                             <FacebookOutlined /> Forever Young
                 <br></br>
                             <InstagramOutlined /> @foreveryoungpy
 
                         </div>
+                      
+
                     </Col>
-                    <Col span={12}>
+                    <Col span={8}>
+                    <DingdingOutlined />Webpage designed by KaPaKaFre
+                    </Col>
+                    <Col span={8}>
                         <div id="test7">
                             <TwitterOutlined /> @foreveryoungpy
                  <br></br>

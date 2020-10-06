@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Layout, Button, Input, Row, Col, Card } from 'antd';
-import { MailOutlined, UserOutlined } from '@ant-design/icons';
+import { MailOutlined, UserOutlined, ShoppingOutlined, SkinOutlined, ItalicOutlined } from '@ant-design/icons';
 import './About.css';
 
 function About(props) {
@@ -70,7 +70,15 @@ function About(props) {
         </Row>
       </Content>
       <h3 style={{ fontSize: 30 }}>Conócenos más!</h3>
+      <Row>
+      <Col span={14}>
       <iframe width="800" height="400" src="https://www.youtube.com/embed/YzcS4XYW6Is" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </Col>
+      <Col span={10}>
+      <h3 style={{ fontSize: 50, textAlign: 'center', color:'#EC95DA', fontFamily: 'Garamond'  }}> <strong>"Style is a way to say who you are without having to speak"<ShoppingOutlined /><SkinOutlined /></strong></h3>
+      </Col>
+      </Row>
+
       <div style={{ fontSize: 50 }}>
         Contactános! </div>
       <br></br>
