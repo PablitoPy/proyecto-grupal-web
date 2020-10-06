@@ -57,8 +57,9 @@ function About(props) {
           />
         </div>
       </Carousel>
-
-      <h4>NOVEDADES</h4>
+      <br></br>
+      <h3 style={{ fontSize: 49, textAlign: 'center', color:'hotpink' }}><strong>NOVEDADES</strong></h3>
+      <br></br>
 
       <Row>
         {productosFavoritos.map(producto => {

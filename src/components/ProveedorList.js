@@ -39,7 +39,7 @@ function ProveedorList (props) {
             })
             .catch(err => {
                 console.log(err);
-                alert(`Seleccione un type que no tenga una tarea asociada`);
+                alert(`Seleccione un proveedor que no tenga un producto asociado`);
             });
     };
 

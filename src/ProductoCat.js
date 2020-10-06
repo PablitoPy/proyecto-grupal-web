@@ -67,10 +67,9 @@ function ProductoCat(props) {
 
             </Row>
             <br />
-            <Pagination defaultCurrent={1} total={10} />
+            <Pagination defaultCurrent={1} total={10} pageSize= {8} />
+                        
         </Content>
-
-
     )
 }
 
