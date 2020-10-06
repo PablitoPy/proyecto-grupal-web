@@ -37,12 +37,15 @@ function About(props) {
   return (
     // <h3>Requested Param: {props.match.params.id}</h3>
     <>
+    <Row>
+      <Col span={18} offset={3}>
       <Carousel autoplay>
         <div>
           <Image
             src="https://forever21.imgix.net/img/app/shopmedia/production/1/16-66-5293.jpg?w=1087&auto=format"
           />
         </div>
+
         <div>
           <Image src="https://www.forever21.com/images/f21/us/en/web/20200407/0929_WGA_JACKETS_D_M_082604_f21.jpg?1" />
         </div>
@@ -57,6 +60,8 @@ function About(props) {
           />
         </div>
       </Carousel>
+      </Col>
+    </Row>
       <br></br>
       <h3 style={{ fontSize: 49, textAlign: 'center', color:'hotpink' }}><strong>NOVEDADES</strong></h3>
       <br></br>
@@ -75,11 +80,11 @@ function About(props) {
                   Precio: {producto.precio} Gs.
                 </p>
                 <a href="url" >Ver detalles del producto</a>
-                <br></br>
-                <br></br>
+                <br></br><br></br>
                 <Button onClick={() => alert("Añadido a carrito")} type="primary" shape="round" icon={<ShoppingCartOutlined />} size={30}   >
                   Añadir a carrito  </Button>
               </Card>
+              <br></br>
             </Col>
           )
         })}

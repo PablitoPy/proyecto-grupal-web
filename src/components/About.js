@@ -78,7 +78,7 @@ function About(props) {
       <h3 style={{ fontSize: 50, textAlign: 'center', color:'#EC95DA', fontFamily: 'Garamond'  }}> <strong>"Style is a way to say who you are without having to speak"<ShoppingOutlined /><SkinOutlined /></strong></h3>
       </Col>
       </Row>
-
+      <br></br> <br></br>
       <div style={{ fontSize: 50 }}>
         Contactános! </div>
       <br></br>
@@ -92,7 +92,7 @@ function About(props) {
       </Row>
       <br></br>
       <TextArea rows={4} />
-      <br></br>
+      <br></br><br></br>
       <Button onClick={() => alert("Gracias por tu mensaje!!")} type="primary">
         Enviar mensaje
         </Button>

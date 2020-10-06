@@ -116,8 +116,12 @@ function App() {
                       
 
                     </Col>
-                    <Col span={8}>
-                    <DingdingOutlined />Webpage designed by KaPaKaFre
+                    <Col span={8}> 
+                    <DingdingOutlined />Webpage designed by:
+                    <div> Karen Riveros </div>
+                    <div>Freddy Guerrero</div>
+                    <div>Pablo Pedrozo</div>
+                    <div>Karina Franco</div>
                     </Col>
                     <Col span={8}>
                         <div id="test7">

@@ -67,8 +67,8 @@ function ProductoCat(props) {
 
             </Row>
             <br />
-            <Pagination defaultCurrent={1} total={10} pageSize= {8} />
-                        
+          {/* <Pagination defaultCurrent={1} total={productos.length} pageSize= {3} /> */}
+          {/* < Col pagination={{ defaultCurrent:1, pageSize: 5, total:productos.length }} dataSource={productos} />             */}
         </Content>
     )
 }
